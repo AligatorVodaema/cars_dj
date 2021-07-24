@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class Car(models.Model):
     model = models.CharField(max_length=100, verbose_name='Модель')
@@ -14,9 +16,12 @@ class Car(models.Model):
     def __str__(self):
         return self.model
     
+    def get_absolute_url(self):
+        return reverse("post", kwargs={"post_slug": self.slug})
+
     class Meta:
-        verbose_name = 'Прокатные авто'
-        verbose_name_plural = 'Прокатные авто'
+        verbose_name = 'Прокатные Авто'
+        verbose_name_plural = 'Прокатные Авто'
         ordering = ['id']
 
 
@@ -27,7 +32,10 @@ class CategoryCars(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("categorycars", kwargs={'cat_slug': self.slug})
+
     class Meta:
-        verbose_name = 'Категории'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'Категории Авто'
+        verbose_name_plural = 'Категории Авто'
         ordering = ['id']

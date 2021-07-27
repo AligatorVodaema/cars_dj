@@ -8,7 +8,7 @@ class CarAdmin(admin.ModelAdmin):
      'is_published', 'is_reserved', 'slug')
     list_display_links = ('id', 'model', 'brand', 'slug')
     search_fields = ('model', 'brand', 'description')
-    list_editable = ('is_published',)
+    list_editable = ('is_published', 'is_reserved')
     list_filter = ('is_published', 'time_create')
     prepopulated_fields = {"slug": ("model",)}
     fields = ('model', 'brand', 'slug', 'cat', 'description', 'photo', 'get_html_photo',

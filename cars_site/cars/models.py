@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
 
 class Car(models.Model):
     model = models.CharField(max_length=100, verbose_name='Модель')
@@ -12,6 +15,9 @@ class Car(models.Model):
     is_published = models.BooleanField(default=True, verbose_name='Публикация')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     cat = models.ForeignKey('CategoryCars', on_delete=models.PROTECT, verbose_name='Категории')
+    car_owner = models.ForeignKey(User, on_delete=models.SET_NULL,
+    null=True, blank=True, verbose_name='Пользователь')
+
 
     def __str__(self):
         return self.model

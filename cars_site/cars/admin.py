@@ -5,14 +5,14 @@ from django.utils.safestring import mark_safe
 
 class CarAdmin(admin.ModelAdmin):
     list_display = ('id', 'model', 'brand', 'time_create', 'get_html_photo',
-     'is_published', 'is_reserved', 'slug')
-    list_display_links = ('id', 'model', 'brand', 'slug')
-    search_fields = ('model', 'brand', 'description')
+     'is_published', 'is_reserved', 'slug', 'car_owner')
+    list_display_links = ('id', 'model', 'brand', 'slug', 'car_owner')
+    search_fields = ('model', 'brand', 'description', 'car_owner')
     list_editable = ('is_published', 'is_reserved')
     list_filter = ('is_published', 'time_create')
     prepopulated_fields = {"slug": ("model",)}
     fields = ('model', 'brand', 'slug', 'cat', 'description', 'photo', 'get_html_photo',
-     'is_published', 'time_create', 'is_reserved')
+     'is_published', 'time_create', 'is_reserved', 'car_owner')
     readonly_fields = ('time_create', 'get_html_photo')
     save_on_top = True
     

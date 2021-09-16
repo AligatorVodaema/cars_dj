@@ -12,7 +12,8 @@
     <p><img class='img-article-left thumb' src={{p.photo.url}}></p>
 {% endif %}
 
-            <h2>{{p.model}}</h2>
+            <h2>{{p.brand}}</h2>
+            <p>{{p.model}}</p>
             {% autoescape off %}
             <p>{{p.description|linebreaks|truncatewords:50}}</p>
             {% endautoescape %}
@@ -21,7 +22,7 @@
 			</li>
 	{% endfor %}
 {% if not posts %}
-    <h1>Нет доступных авто в данной категории</h1>
+    <p>Нет доступных авто в данной категории</p>
 {% endif %}
 </ul>
 {% endblock %}
